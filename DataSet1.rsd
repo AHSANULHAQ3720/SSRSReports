@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>ADVW2022</DataSourceReference>
+      <CommandText>SELECT [BusinessEntityID]
+      ,[TerritoryID]
+      ,[SalesQuota]
+      ,[Bonus]
+      ,[CommissionPct]
+      ,[SalesYTD]
+      ,[SalesLastYear],
+	  CASE 
+	     
+		 WHEN Bonus &gt;= 0 AND  BONUS &lt; 350 then 'Less than 350'
+		 WHEN Bonus &gt;= 350 AND BONUS &lt; 500 then 'Less than 500'
+		 ELSE 'Greater than 500'
+	  END AS BonusCategorization
+
+
+  FROM [AdventureWorks2022].[Sales].[SalesPerson]
+</CommandText>
+    </Query>
+  </DataSet>
+</SharedDataSet>
